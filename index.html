@@ -1,6 +1,8 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
+  </head>
     <script>
       
     AFRAME.registerComponent('slidehandler1', {
@@ -9,7 +11,7 @@
     this.el.addEventListener('click', () => {
     pln.setAttribute('visible',true);
     //pln.setAttribute("position",{x:0,y:5,z:-9});
-    pln.setAttribute('animation', 'property: position; dur: 1000; from: 0 0 -30; to: 0 5 -30');
+    pln.setAttribute('animation', 'property: position; dur: 1000; from: 0 0 -0; to: 0 5 -0');
     });
     }
     });
@@ -18,7 +20,7 @@
   </head>
   <body>
     <a-scene>
-      <a-entity camera="active: true" look-controls wasd-controls position="0 1.6 0" data-aframe-default-camera></a-entity>
+      <a-entity camera="active: true" look-controls wasd-controls position="0 0 0" data-aframe-default-camera></a-entity>
       <a-camera>
         <a-cursor color="#F1F562"></a-cursor>
         <a-sound src="audio/ReturnHome.wav" autoplay="true" position="0 0 0" loop="true" volume="0.1"></a-sound>
@@ -29,16 +31,21 @@
 <a-entity oculus-go-controls="hand: left"></a-entity>
 <a-entity oculus-go-controls="hand: right"></a-entity>
 
-<a-plane id="invisible" color="#7BC8A4" height="4" width="4" position="0 0 -30" transparent="true" opacity="0.5" visible="false">
+<a-plane id="invisible" color="#7BC8A4" height="4" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="text here oo." color="white" width="10" position="-1 0 0" ></a-text>
   <!-- <a-image  id="cancel_tc" src="#cancel" position="9.5 3 0"></a-image> -->
   </a-plane>
 
-  <a-image id="button_click" slidehandler1 src="#button" height="1" width="1" position="-4 5 -30"></a-image>
+  <a-image id="button_click" slidehandler1 src="#button" height="1" width="1" position="-4 5 0"></a-image>
 
-      <a-box position="0 0 10" height="40" width="70" rotation="0 0 0" color="#4CC3D9"></a-box>
-      <a-box position="0 0 -32" height="40" width="70" rotation="0 0 0" color="#4CC3D9"></a-box>
-      <a-box position="0 0 0" height="40" width="70" rotation="0 0 0" color="#4CC3D9"></a-box>
+		<rw-room position="-2 0 -2" material="color:#000000">
+			<rw-wall position="20 0 0"></rw-wall>
+			<rw-wall position="20 0 20"></rw-wall>
+			<rw-wall position="0 0 20"></rw-wall>
+			<rw-wall position="0 0 0">
+
+			</rw-wall>
+
 
       <a-plane position="0 0 -4" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
