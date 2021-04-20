@@ -3,8 +3,9 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
   </head>
-  <!-- okay so i added an event listener that when you click the img src="#button" it will call an animation
+  <!-- okay so i added an event listener that when you click the slidehandler1 it will call an animation
   and make the a-plane with text animate in.-->
+  <!-- image 1-->
     <script>
     AFRAME.registerComponent('slidehandler1', {
     init:function() {
@@ -12,12 +13,69 @@
     this.el.addEventListener('click', () => {
     pln.setAttribute('visible',true);
     //pln.setAttribute("position",{x:0,y:5,z:-9});
-    pln.setAttribute('animation', 'property: position; dur: 1000; from: 0 0 -0; to: 0 5 -0');
+    pln.setAttribute('animation', 'property: position; dur: 1000; from: 2.7 0 -1.5; to: 2.7 1.5 -1.5');
     });
     }
     });
 
     </script>
+<!-- image 2 dark sky and reflections-->
+<script>
+  AFRAME.registerComponent('slidehandler2', {
+  init:function() {
+  var pln = document.querySelector("#imgPlane2");
+  this.el.addEventListener('click', () => {
+  pln.setAttribute('visible',true);
+  //pln.setAttribute("position",{x:0,y:5,z:-9});
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: 2 0 -0; to: 17.5 1.5 4');
+  });
+  }
+  });
+
+  </script>
+<!-- image 3 a pop of orange-->
+<script>
+  AFRAME.registerComponent('slidehandler3', {
+  init:function() {
+  var pln = document.querySelector("#imgPlane3");
+  this.el.addEventListener('click', () => {
+  pln.setAttribute('visible',true);
+  //pln.setAttribute("position",{x:0,y:5,z:-9});
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: 13 0 17.8; to: 13 1.5 17.8');
+  });
+  }
+  });
+
+  </script>
+<!-- image 4 black swirls-->
+<script>
+  AFRAME.registerComponent('slidehandler4', {
+  init:function() {
+  var pln = document.querySelector("#imgPlane4");
+  this.el.addEventListener('click', () => {
+  pln.setAttribute('visible',true);
+  //pln.setAttribute("position",{x:0,y:5,z:-9});
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: 13 0 -1.5; to: 13 1.5 -1.5');
+  });
+  }
+  });
+
+  </script>
+
+  <!-- image 5-->
+<script>
+  AFRAME.registerComponent('slidehandler5', {
+  init:function() {
+  var pln = document.querySelector("#imgPlane5");
+  this.el.addEventListener('click', () => {
+  pln.setAttribute('visible',true);
+  //pln.setAttribute("position",{x:0,y:5,z:-9});
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: 13 0 -1.5; to: 13 1.5 -1.5');
+  });
+  }
+  });
+
+  </script>
      <script src="http://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
   </head>
   <body>
@@ -26,32 +84,73 @@
       <a-camera>
         <a-cursor color="#F1F562"></a-cursor>
         <!-- i just added a sound i had, but we can change it to something better-->
-        <a-sound src="audio/ReturnHome.wav" autoplay="true" position="0 0 0" loop="true" volume="0.1"></a-sound>
+        <!--
+        <a-sound src="audio/ReturnHome.wav" autoplay="true" position="0 0 0" loop="true" volume="0.1"></a-sound> -->
       </a-camera>
 
+      <!-- assets-->
+      <img id="floor" src="/img/flooring2.jpg">
+      <img id="image1" src="/img/drowning.jpg">
+      <img id="image2" src="/img/britt1.jpg">
+      <img id="image3" src="/img/britt2.jpg">
+      <img id="image4" src="/img/britt3.jpg">
+      <img id="image5" src="/img/britt4.jpg">
+<!-- lights-->
+<a-entity light="type: spot; angle: -90; intensity: 0.1" rotation="-90 0 0" position="3 10 -1.5"></a-entity>
+<a-entity light="type: spot; angle: -90; intensity: 0.1" rotation="-90 0 0" position="13 10 -1.5"></a-entity>
+<a-entity light="type: ambient; color: #CCC"></a-entity>
         <!-- oculus GO -->
 <a-entity oculus-go-controls></a-entity>
 <a-entity oculus-go-controls="hand: left"></a-entity>
 <a-entity oculus-go-controls="hand: right"></a-entity>
 
-<!-- plane animation that is called in by the above event listener-->
-<a-plane id="invisible" color="#7BC8A4" height="2" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
-  <a-text value="text here oo." color="white" width="10" position="-1 0 0" ></a-text>
+<!-- img 3 drowning -->
+<a-plane id="invisible" color="#EFE7DA " height="1.5" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="Drowning: Jake" color="black" width="7" position="-1 0 0" ></a-text>
   </a-plane>
 <!-- button you click to bring in plane and text ^^-->
-  <a-image id="button_click" slidehandler1 src="#button" height="1" width="1" position="-4 5 0"></a-image>
+  <a-image id="button_click" slidehandler1 src="#image1" height="4" width="5" position="3 5 -1.5"></a-image>
+
+
+  
+<!-- img 2 dark dky -->
+<a-plane id="imgPlane2" color="#EFE7DA " height="1.5" width="4"  rotation="0 -90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="Dark Sky and Reflections: Brittany" color="black" width="7"  position="-1 0 0" ></a-text>
+  </a-plane>
+<!-- button you click to bring in plane and text ^^-->
+  <a-image id="button_click" slidehandler2 src="#image2" height="4" width="5" rotation="0 90 0" position="17.8 5 4"></a-image>
+
+  <!-- img 3 a pop of orange-->
+<a-plane id="imgPlane3" color="#EFE7DA " height="1.5" width="4" rotation="0 180 0"  position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="A Pop of Orange: Brittany" color="black" width="7" position="-1.7 0 0" ></a-text>
+  </a-plane>
+<!-- button you click to bring in plane and text ^^-->
+  <a-image id="button_click" slidehandler3 src="#image3" height="4" width="5" rotation="0 0 0" position="13 5 17.8"></a-image>
+
+  <!--img 4-->
+<a-plane id="imgPlane4" color="#EFE7DA" height="1.5" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="Black Swirls: Brittany" color="black" width="7" position="-1.5 0 0" ></a-text>
+  </a-plane>
+<!-- button you click to bring in plane and text-->
+  <a-image id="button_click" slidehandler4 src="#image4" height="4" width="5" rotation="0 0 0" position="13 5 -1.5"></a-image>
+
+    <!--img 4-->
+<a-plane id="imgPlane5" color="#EFE7DA" height="1.5" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="B" color="black" width="7" position="-1.5 0 0" ></a-text>
+  </a-plane>
+<!-- button you click to bring in plane and text ^^-->
+  <a-image id="button_click" slidehandler5 src="#image5" height="4" width="5" rotation="0 0 0" position="13 5 -1.5"></a-image>
 
   <!-- added a room comp, you can add doors to this and connect more rooms if we wanted to
   tried to add static body so you dont go through it but?? its not working-->
   <!-- i can add a ceiling to this-->
-		<rw-room position="-2 0 -2" material="color:#000000">
-			<rw-wall static-body position="20 0 0"></rw-wall>
-			<rw-wall static-body position="20 0 20"></rw-wall>
-			<rw-wall static-body position="0 0 20"></rw-wall>
-			<rw-wall static-body position="0 0 0"></rw-wall>
-
-
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="50" height="50" color="#7BC8A4"></a-plane>
+		<rw-room position="-2 0 -2" material="color:#ABB6A7">
+      <rw-ceiling position="0 0 0" material="colotr:#ECECEC"></rw-ceiling>
+			<rw-wall static-body position="20 0 0" height="10" ></rw-wall>
+			<rw-wall static-body position="20 0 20" height="10"></rw-wall>
+			<rw-wall static-body position="0 0 20" height="10"></rw-wall>
+			<rw-wall static-body position="0 0 0" height="10"></rw-wall>
+      <a-plane src="#floor" position="10 0 10" rotation="-90 0 0" width="20" height="20"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
