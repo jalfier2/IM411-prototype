@@ -3,7 +3,7 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
   </head>
-  <!-- okay so i added an event listener that when you click the slidehandler1 it will call an animation
+  <!-- okay so i added an event listener that when you click the slidehandler it will call an animation
   and make the a-plane with text animate in.-->
   <!-- image 1-->
     <script>
@@ -27,7 +27,7 @@
   this.el.addEventListener('click', () => {
   pln.setAttribute('visible',true);
   //pln.setAttribute("position",{x:0,y:5,z:-9});
-  pln.setAttribute('animation', 'property: position; dur: 1000; from: 2 0 -0; to: 17.5 1.5 4');
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: 17.5 0 4; to: 17.5 1.5 4');
   });
   }
   });
@@ -59,10 +59,9 @@
   });
   }
   });
-
   </script>
 
-  <!-- image 5-->
+  <!-- image 5 forgot the name, its yours-->
 <script>
   AFRAME.registerComponent('slidehandler5', {
   init:function() {
@@ -70,7 +69,53 @@
   this.el.addEventListener('click', () => {
   pln.setAttribute('visible',true);
   //pln.setAttribute("position",{x:0,y:5,z:-9});
-  pln.setAttribute('animation', 'property: position; dur: 1000; from: 13 0 -1.5; to: 13 1.5 -1.5');
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: 17.8 0 13; to: 17.8 1.5 13');
+  });
+  }
+  });
+
+  </script>
+
+    <!-- image 6 ghost in forest-->
+<script>
+  AFRAME.registerComponent('slidehandler6', {
+  init:function() {
+  var pln = document.querySelector("#imgPlane6");
+  this.el.addEventListener('click', () => {
+  pln.setAttribute('visible',true);
+  //pln.setAttribute("position",{x:0,y:5,z:-9});
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: -1.9 0 3; to: -1.9 1.5 3');
+  });
+  }
+  });
+
+  </script>
+
+      <!-- image 7 sad face-->
+<script>
+  AFRAME.registerComponent('slidehandler7', {
+  init:function() {
+  var pln = document.querySelector("#imgPlane7");
+  this.el.addEventListener('click', () => {
+  pln.setAttribute('visible',true);
+  //pln.setAttribute("position",{x:0,y:5,z:-9});
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: -1.9 0 13; to: -1.9 1.5 13');
+  });
+  }
+  });
+
+  </script>
+
+  
+      <!-- image 8 Too Many Thoughts-->
+<script>
+  AFRAME.registerComponent('slidehandler8', {
+  init:function() {
+  var pln = document.querySelector("#imgPlane8");
+  this.el.addEventListener('click', () => {
+  pln.setAttribute('visible',true);
+  //pln.setAttribute("position",{x:0,y:5,z:-9});
+  pln.setAttribute('animation', 'property: position; dur: 1000; from: 3 0 17.8; to: 3 1.5 17.8');
   });
   }
   });
@@ -83,8 +128,9 @@
       <a-entity camera="active: true" look-controls wasd-controls position="0 0 0" data-aframe-default-camera></a-entity>
       <a-camera>
         <a-cursor color="#F1F562"></a-cursor>
-        <!-- i just added a sound i had, but we can change it to something better-->
-        <!--
+
+        <!--*********** REMINDER TO UNCOMMENT BEFORE TESTING/SUBMITTING *************-->
+        <!-- This is JUSt commented out so it isn't as annoying to work with on a loop lol
         <a-sound src="audio/ReturnHome.wav" autoplay="true" position="0 0 0" loop="true" volume="0.1"></a-sound> -->
       </a-camera>
 
@@ -95,6 +141,9 @@
       <img id="image3" src="/img/britt2.jpg">
       <img id="image4" src="/img/britt3.jpg">
       <img id="image5" src="/img/britt4.jpg">
+      <img id="image6" src="/img/forest.png">
+      <img id="image7" src="/img/sadFace.jpg">
+      <img id="image8" src="/img/tooManyThoughts.jpg">
 <!-- lights-->
 <a-entity light="type: spot; angle: -90; intensity: 0.1" rotation="-90 0 0" position="3 10 -1.5"></a-entity>
 <a-entity light="type: spot; angle: -90; intensity: 0.1" rotation="-90 0 0" position="13 10 -1.5"></a-entity>
@@ -104,42 +153,55 @@
 <a-entity oculus-go-controls="hand: left"></a-entity>
 <a-entity oculus-go-controls="hand: right"></a-entity>
 
-<!-- img 3 drowning -->
+<!-- img 1 drowning -->
 <a-plane id="invisible" color="#EFE7DA " height="1.5" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Drowning: Jake" color="black" width="7" position="-1 0 0" ></a-text>
   </a-plane>
-<!-- button you click to bring in plane and text ^^-->
   <a-image id="button_click" slidehandler1 src="#image1" height="4" width="5" position="3 5 -1.5"></a-image>
 
 
   
-<!-- img 2 dark dky -->
-<a-plane id="imgPlane2" color="#EFE7DA " height="1.5" width="4"  rotation="0 -90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
-  <a-text value="Dark Sky and Reflections: Brittany" color="black" width="7"  position="-1 0 0" ></a-text>
+<!-- img 2 dark sky -->
+<a-plane id="imgPlane2" color="#EFE7DA " height="1.5" width="5"  rotation="0 -90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="Dark Sky and Reflections: Brittany" color="black" width="7"  position="-2.3 0 0" ></a-text>
   </a-plane>
-<!-- button you click to bring in plane and text ^^-->
   <a-image id="button_click" slidehandler2 src="#image2" height="4" width="5" rotation="0 90 0" position="17.8 5 4"></a-image>
 
   <!-- img 3 a pop of orange-->
 <a-plane id="imgPlane3" color="#EFE7DA " height="1.5" width="4" rotation="0 180 0"  position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="A Pop of Orange: Brittany" color="black" width="7" position="-1.7 0 0" ></a-text>
   </a-plane>
-<!-- button you click to bring in plane and text ^^-->
   <a-image id="button_click" slidehandler3 src="#image3" height="4" width="5" rotation="0 0 0" position="13 5 17.8"></a-image>
 
-  <!--img 4-->
+  <!--img 4 blackSwirls-->
 <a-plane id="imgPlane4" color="#EFE7DA" height="1.5" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Black Swirls: Brittany" color="black" width="7" position="-1.5 0 0" ></a-text>
   </a-plane>
-<!-- button you click to bring in plane and text-->
   <a-image id="button_click" slidehandler4 src="#image4" height="4" width="5" rotation="0 0 0" position="13 5 -1.5"></a-image>
 
-    <!--img 4-->
-<a-plane id="imgPlane5" color="#EFE7DA" height="1.5" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
-  <a-text value="B" color="black" width="7" position="-1.5 0 0" ></a-text>
+    <!--img 5 sry i forgot the name for this one lol-->
+<a-plane id="imgPlane5" color="#EFE7DA" height="1.5" width="4" rotation="0 -90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="Forest?: Brittany" color="black" width="7" position="-1.5 0 0" ></a-text>
   </a-plane>
-<!-- button you click to bring in plane and text ^^-->
-  <a-image id="button_click" slidehandler5 src="#image5" height="4" width="5" rotation="0 0 0" position="13 5 -1.5"></a-image>
+  <a-image id="button_click" slidehandler5 src="#image5" height="4" width="5" rotation="0 90 0" position="17.8 5 13"></a-image>
+
+      <!--img 6 Ghosts in Forest-->
+<a-plane id="imgPlane6" color="#EFE7DA" height="1.5" width="4" rotation="0 90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="Ghosts in Forest: Jake" color="black" width="7" position="-1.5 0 0" ></a-text>
+  </a-plane>
+  <a-image id="button_click" slidehandler6 src="#image6" height="4" width="5" rotation="0 90 0" position="-1.9 5 3"></a-image>
+
+        <!--img 7 Sad Face-->
+<a-plane id="imgPlane7" color="#EFE7DA" height="1.5" width="4" rotation="0 90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="Sad Face: Jake" color="black" width="7" position="-1.5 0 0" ></a-text>
+  </a-plane>
+  <a-image id="button_click" slidehandler7 src="#image7" height="4" width="5" rotation="0 90 0" position="-1.9 5 13"></a-image>
+
+          <!--img 8 TooManyThoughts-->
+<a-plane id="imgPlane8" color="#EFE7DA" height="1.5" width="4" rotation="0 180 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
+  <a-text value="Too Many Thoughts: Jake" color="black" width="7" position="-1.8 0 0" ></a-text>
+  </a-plane>
+  <a-image id="button_click" slidehandler8 src="#image8" height="4" width="5" rotation="0 0 0" position="3 5 17.8"></a-image>
 
   <!-- added a room comp, you can add doors to this and connect more rooms if we wanted to
   tried to add static body so you dont go through it but?? its not working-->
