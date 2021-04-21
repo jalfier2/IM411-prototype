@@ -2,6 +2,7 @@
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-play-sound-on-event@1.0.2/dist/aframe-play-sound-on-event.min.js"></script>
   </head>
   <!-- okay so i added an event listener that when you click the slidehandler it will call an animation
   and make the a-plane with text animate in.-->
@@ -121,6 +122,27 @@
   });
 
   </script>
+
+<!-- not necessary anymore lol
+<script>
+AFRAME.registerComponent('audiohandler', {
+  init:function() {
+      let playing = false;
+      let audio = document.querySelector("#playAudio");
+      this.el.addEventListener('click', () => {
+if(!playing) {
+              audio.play();
+          } else {
+              audio.pause();
+              audio.currentTime = 3;
+          }
+          playing = !playing;
+      });
+  }
+})
+</script> -->
+</head>
+
      <script src="http://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
   </head>
   <body>
@@ -130,12 +152,14 @@
         <a-cursor color="#F1F562"></a-cursor>
 
         <!--*********** REMINDER TO UNCOMMENT BEFORE TESTING/SUBMITTING *************-->
-        <!-- This is JUSt commented out so it isn't as annoying to work with on a loop lol
-        <a-sound src="audio/ReturnHome.wav" autoplay="true" position="0 0 0" loop="true" volume="0.1"></a-sound> -->
+        <!-- This is JUSt commented out so it isn't as annoying to work with on a loop lol 
+        <a-sound sound="src: #ambient" autoplay="true" position="0 0 0" loop="true" volume="0.01"></a-sound> -->
       </a-camera>
 
       <!-- assets-->
+
       <img id="floor" src="/img/flooring2.jpg">
+      <img id="frame" src="/img/flooring.png">
       <img id="image1" src="/img/drowning.jpg">
       <img id="image2" src="/img/britt1.jpg">
       <img id="image3" src="/img/britt2.jpg">
@@ -144,6 +168,9 @@
       <img id="image6" src="/img/forest.png">
       <img id="image7" src="/img/sadFace.jpg">
       <img id="image8" src="/img/tooManyThoughts.jpg">
+      <audio id="shutter" src="audio/CameraShutter.mp3"></audio>
+      <audio id="ambient" src="audio/Serenity.wav"></audio>
+     
 <!-- lights-->
 <a-entity light="type: spot; angle: -90; intensity: 0.1" rotation="-90 0 0" position="3 10 -1.5"></a-entity>
 <a-entity light="type: spot; angle: -90; intensity: 0.1" rotation="-90 0 0" position="13 10 -1.5"></a-entity>
@@ -157,7 +184,11 @@
 <a-plane id="invisible" color="#EFE7DA " height="1.5" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Drowning: Jake" color="black" width="7" position="-1 0 0" ></a-text>
   </a-plane>
-  <a-image id="button_click" slidehandler1 src="#image1" height="4" width="5" position="3 5 -1.5"></a-image>
+  <a-image sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" id="button_click" slidehandler1 src="#image1" height="4" width="5" position="3 5 -1.5"></a-image>
+  
+  <!-- test box to see if shutter works..
+  <a-entity sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" geometry="primitive: box"></a-entity>
+  -->
 
 
   
@@ -165,43 +196,47 @@
 <a-plane id="imgPlane2" color="#EFE7DA " height="1.5" width="5"  rotation="0 -90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Dark Sky and Reflections: Brittany" color="black" width="7"  position="-2.3 0 0" ></a-text>
   </a-plane>
-  <a-image id="button_click" slidehandler2 src="#image2" height="4" width="5" rotation="0 90 0" position="17.8 5 4"></a-image>
+  <a-image sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" id="button_click" slidehandler2 src="#image2" height="4" width="5" rotation="0 90 0" position="17.8 5 4"></a-image>
+ 
+  <!-- idk why this isnt -->
+  <a-box src="#frame" position="19 5 4" width="5.5" height="4.5" depth="2.3" rotation="0 -90 0"></a-box>
+  
 
   <!-- img 3 a pop of orange-->
 <a-plane id="imgPlane3" color="#EFE7DA " height="1.5" width="4" rotation="0 180 0"  position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="A Pop of Orange: Brittany" color="black" width="7" position="-1.7 0 0" ></a-text>
   </a-plane>
-  <a-image id="button_click" slidehandler3 src="#image3" height="4" width="5" rotation="0 0 0" position="13 5 17.8"></a-image>
+  <a-image sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" id="button_click" slidehandler3 src="#image3" height="4" width="5" rotation="0 0 0" position="13 5 17.8"></a-image>
 
   <!--img 4 blackSwirls-->
 <a-plane id="imgPlane4" color="#EFE7DA" height="1.5" width="4" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Black Swirls: Brittany" color="black" width="7" position="-1.5 0 0" ></a-text>
   </a-plane>
-  <a-image id="button_click" slidehandler4 src="#image4" height="4" width="5" rotation="0 0 0" position="13 5 -1.5"></a-image>
+  <a-image sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" id="button_click" slidehandler4 src="#image4" height="4" width="5" rotation="0 0 0" position="13 5 -1.5"></a-image>
 
     <!--img 5 sry i forgot the name for this one lol-->
 <a-plane id="imgPlane5" color="#EFE7DA" height="1.5" width="4" rotation="0 -90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Forest?: Brittany" color="black" width="7" position="-1.5 0 0" ></a-text>
   </a-plane>
-  <a-image id="button_click" slidehandler5 src="#image5" height="4" width="5" rotation="0 90 0" position="17.8 5 13"></a-image>
+  <a-image sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" id="button_click" slidehandler5 src="#image5" height="4" width="5" rotation="0 90 0" position="17.8 5 13"></a-image>
 
       <!--img 6 Ghosts in Forest-->
 <a-plane id="imgPlane6" color="#EFE7DA" height="1.5" width="4" rotation="0 90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Ghosts in Forest: Jake" color="black" width="7" position="-1.5 0 0" ></a-text>
   </a-plane>
-  <a-image id="button_click" slidehandler6 src="#image6" height="4" width="5" rotation="0 90 0" position="-1.9 5 3"></a-image>
+  <a-image sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" id="button_click" slidehandler6 src="#image6" height="4" width="5" rotation="0 90 0" position="-1.9 5 3"></a-image>
 
         <!--img 7 Sad Face-->
 <a-plane id="imgPlane7" color="#EFE7DA" height="1.5" width="4" rotation="0 90 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Sad Face: Jake" color="black" width="7" position="-1.5 0 0" ></a-text>
   </a-plane>
-  <a-image id="button_click" slidehandler7 src="#image7" height="4" width="5" rotation="0 90 0" position="-1.9 5 13"></a-image>
+  <a-image sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" id="button_click" slidehandler7 src="#image7" height="4" width="5" rotation="0 90 0" position="-1.9 5 13"></a-image>
 
           <!--img 8 TooManyThoughts-->
 <a-plane id="imgPlane8" color="#EFE7DA" height="1.5" width="4" rotation="0 180 0" position="-10 0 -20" transparent="true" opacity="0.5" visible="false">
   <a-text value="Too Many Thoughts: Jake" color="black" width="7" position="-1.8 0 0" ></a-text>
   </a-plane>
-  <a-image id="button_click" slidehandler8 src="#image8" height="4" width="5" rotation="0 0 0" position="3 5 17.8"></a-image>
+  <a-image sound="src: #shutter" play-sound-on-event="mode: toggle-stop; event: click" id="button_click" slidehandler8 src="#image8" height="4" width="5" rotation="0 0 0" position="3 5 17.8"></a-image>
 
   <!-- added a room comp, you can add doors to this and connect more rooms if we wanted to
   tried to add static body so you dont go through it but?? its not working-->
